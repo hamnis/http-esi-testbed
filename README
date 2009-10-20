@@ -1,0 +1,10 @@
+ESI http testbed
+
+Webapplication that exposes the rules for HTTP.
+
+
+to test:
+
+mvn jetty:run
+
+browse to http://localhost:8080/

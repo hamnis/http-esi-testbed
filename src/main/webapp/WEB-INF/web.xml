@@ -1,0 +1,189 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+  <display-name>Archetype Created Web Application</display-name>
+
+  <filter>
+    <filter-name>CacheControl</filter-name>
+    <filter-class>org.escenic.testbed.servlet.CacheControlFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>cc</param-value>
+    </init-param>
+  </filter>
+
+  <filter>
+    <filter-name>ConditionalError</filter-name>
+    <filter-class>org.escenic.testbed.servlet.ErrorFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>conditional-error</param-value>
+    </init-param>
+  </filter>
+
+  <filter>
+    <filter-name>ConditionalSleep</filter-name>
+    <filter-class>org.escenic.testbed.servlet.SleepFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>sleep</param-value>
+    </init-param>
+  </filter>
+
+  <filter>
+    <filter-name>ETag</filter-name>
+    <filter-class>org.escenic.testbed.servlet.ETagFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>etag</param-value>
+    </init-param>
+  </filter>
+  
+  <filter>
+    <filter-name>FastError</filter-name>
+    <filter-class>org.escenic.testbed.servlet.ErrorFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>error</param-value>
+    </init-param>
+  </filter>
+
+  <filter>
+    <filter-name>HitCount</filter-name>
+    <filter-class>org.escenic.testbed.servlet.HitCountFilter</filter-class>
+  </filter>
+
+  <filter>
+    <filter-name>IfModified</filter-name>
+    <filter-class>org.escenic.testbed.servlet.IfModifiedSinceFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>lm</param-value>
+    </init-param>
+  </filter>
+
+  <filter>
+    <filter-name>LastModified</filter-name>
+    <filter-class>org.escenic.testbed.servlet.LastModifiedFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>lm</param-value>
+    </init-param>
+  </filter>
+
+  <filter>
+    <filter-name>SlowError</filter-name>
+    <filter-class>org.escenic.testbed.servlet.ErrorFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>slow-error</param-value>
+    </init-param>
+  </filter>
+
+  <filter>
+    <filter-name>Surrogate</filter-name>
+    <filter-class>org.escenic.testbed.servlet.SurrogateFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>surrogate</param-value>
+    </init-param>
+  </filter>
+
+  <filter>
+    <filter-name>UnconditionalSleep</filter-name>
+    <filter-class>org.escenic.testbed.servlet.SleepFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>unconditional-sleep</param-value>
+    </init-param>
+  </filter>
+
+
+  <!-- Filters appearing in the order they are to be executed -->
+  <filter-mapping>
+    <filter-name>HitCount</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>Surrogate</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>CacheControl</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>FastError</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>UnconditionalSleep</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>SlowError</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>LastModified</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>ETag</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>IfModified</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>ConditionalError</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>ConditionalSleep</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  <servlet>
+    <servlet-name>RestServlet</servlet-name>
+    <servlet-class>org.escenic.testbed.servlet.RestServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>index</servlet-name>
+    <jsp-file>/index.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>RestServlet</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/pages/error.jsp</location>
+  </error-page>
+
+</web-app>
