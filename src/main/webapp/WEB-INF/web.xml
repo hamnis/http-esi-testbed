@@ -99,10 +99,20 @@
     </init-param>
   </filter>
 
+  <filter>
+    <filter-name>DateFilter</filter-name>
+    <filter-class>org.escenic.testbed.servlet.DateFilter</filter-class>
+  </filter>
+
 
   <!-- Filters appearing in the order they are to be executed -->
   <filter-mapping>
     <filter-name>HitCount</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>DateFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
