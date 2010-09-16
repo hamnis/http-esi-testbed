@@ -1,8 +1,27 @@
+
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
   <display-name>Archetype Created Web Application</display-name>
+
+  <filter>
+    <filter-name>BasicAuth</filter-name>
+    <filter-class>org.escenic.testbed.servlet.BasicAuthFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>basic</param-value>
+    </init-param>
+  </filter>
+
+  <filter>
+    <filter-name>DigestAuth</filter-name>
+    <filter-class>org.escenic.testbed.servlet.DigestAuthFilter</filter-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>digest</param-value>
+    </init-param>
+  </filter>
 
   <filter>
     <filter-name>CacheControl</filter-name>
@@ -115,7 +134,7 @@
     <filter-name>DateFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
+  
   <filter-mapping>
     <filter-name>Surrogate</filter-name>
     <url-pattern>/*</url-pattern>
@@ -166,6 +185,15 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <filter-mapping>
+    <filter-name>BasicAuth</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>DigestAuth</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <servlet>
     <servlet-name>RestServlet</servlet-name>
