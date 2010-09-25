@@ -7,6 +7,33 @@
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>http esi testbed</name>
+  <description>
+    This project is designed to make it easy to write integration tests for HTTP proxies like Varnish Cache and for
+    other HTTP clients, such as RSS readers or web browsers and test their conformance to various parts of HTTP.
+  </description>
+  <url>http://escenic.org/wiki/ESIProject</url>
+  <developers>
+    <developer>
+      <id>hamnis</id>
+      <email>ngarthl@gmail.com</email>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Imran M Yousuf</name>
+      <email>imyousuf@smartitengineering.com</email>
+      <organization>Smart IT Engineering Ltd.</organization>
+    </contributor>
+  </contributors>
+  <scm>
+    <url>http://github.com/hamnis/http-esi-testbed</url>
+    <connection>scm:git:git://github.com/hamnis/http-esi-testbed.git</connection>
+  </scm>
+  <licenses>
+    <license>
+      <url>http://github.com/hamnis/http-esi-testbed/raw/master/LICENSE.txt</url>
+    </license>
+  </licenses>
   <dependencies>
     <dependency>
       <groupId>org.codehaus.httpcache4j</groupId>
