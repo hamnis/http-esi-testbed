@@ -9,7 +9,7 @@
   <groupId>org.escenic.rest</groupId>
   <artifactId>http-esi-testbed</artifactId>
   <packaging>war</packaging>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <name>http esi testbed</name>
   <description>
     This project is designed to make it easy to write integration tests for HTTP proxies like Varnish Cache and for
