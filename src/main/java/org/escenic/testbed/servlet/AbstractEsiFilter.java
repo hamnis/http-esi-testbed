@@ -35,6 +35,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.UnsupportedCharsetException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -86,7 +89,7 @@ public abstract class AbstractEsiFilter implements Filter {
       paths = new HashMap<String, PathElement>();
       String path = calculatePath(pRequest);
       for (String p : path.split("/")) {
-        PathElement element = new PathElement(p);
+        PathElement element = new PathElement(decodeURI(p));
         if (element.getName() != null && !element.getName().equals("")) {
           paths.put(element.getName(), element);
         }
@@ -95,7 +98,15 @@ public abstract class AbstractEsiFilter implements Filter {
     return paths;
   }
 
-  private static String calculatePath(final HttpServletRequest pRequest) {
+    private static String decodeURI(String p) {
+        try {
+            return URLDecoder.decode(p, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new UnsupportedCharsetException("UTF-8");
+        }
+    }
+
+    private static String calculatePath(final HttpServletRequest pRequest) {
     String path = pRequest.getServletPath();
     if (path == null) {
       path = "";

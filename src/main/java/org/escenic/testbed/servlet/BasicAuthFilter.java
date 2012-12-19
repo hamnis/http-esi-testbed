@@ -34,7 +34,7 @@ public class BasicAuthFilter extends AbstractEsiFilter {
         if (StringUtils.isNotBlank(user) && StringUtils.isNotBlank(pass)) {
             String authorization = pRequest.getHeader(HeaderConstants.AUTHORIZATION);
             if (StringUtils.isNotBlank(authorization)) {
-                if (authorization.indexOf(BASIC) != -1) {
+                if (authorization.contains(BASIC)) {
                     authorization = authorization.substring(BASIC.length()).trim();
                     String encoded = new String(Base64.encodeBase64((user + ":" + pass).getBytes()));
                     if (encoded.equals(authorization)) {
